@@ -29,6 +29,16 @@ section{
     align-items: center;
 }
 
-a{
-    margin: 10px;
+.linkpagina{
+    margin: 15px;
+}
+
+h3{
+    color: green;
+    text-align: center;
+}
+
+h2{
+    color: rgb(26, 54, 26);
+    text-align: center;
 }
