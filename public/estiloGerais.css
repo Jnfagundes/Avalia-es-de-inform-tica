@@ -1,0 +1,58 @@
+body{
+    background-color: rgb(61, 68, 61);
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    width: 99%;
+    height: 90px;
+    background-color: rgb(50, 63, 50);
+    border-radius: 10px;
+
+}
+
+#logo{
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-right: 400px;
+}
+
+h1{
+    font-weight: bolder;
+    color: wheat;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 0px;
+    margin-right: 50px;
+}
+h4{
+    margin-top: 0px;
+    margin-left: 5px;
+    color: wheat;
+}
+.perguntas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+
+}
+article{
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    background-color: rgb(50, 63, 50);
+    border-radius: 10px;
+}
+
+h2{
+    margin-left: 20px;
+    color: wheat;
+}
+.questao{
+    margin: 10px;
+    color: rgb(158, 184, 158);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

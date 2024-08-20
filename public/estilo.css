@@ -27,6 +27,7 @@ section{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    background-color: rgb(230, 199, 143);
 }
 
 .linkpagina{
