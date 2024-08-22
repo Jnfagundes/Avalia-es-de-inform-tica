@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-color: rgb(33, 36, 33);
+}
+
+header{
+    background-color: rgb(37, 51, 37);
+    border-radius: 10px;
+    display: flex;
+    margin: auto;
+    height: 100px;
+    width: 99%;
+
+}
+
+h1{
+    color: wheat;
+    margin-left: 50px;
+    margin-right: 200px;
+}
+
+#logo{
+    width: 300px;
+    margin-top: 20px;
+}
+
+#logoimg{
+    width: 100px;
+}
+
+nav{
+    margin-left: 200px;
+}
+
+h4{
+    margin-top: 0px;
+    margin-left: 5px;
+}
