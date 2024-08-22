@@ -23,7 +23,8 @@ section{
     height: 600px;
     border: solid 3px green;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -43,3 +44,18 @@ h2{
     color: rgb(26, 54, 26);
     text-align: center;
 }
+
+#revisao{
+    width: 250px;
+    height: 100px;
+    background-color: rgb(11, 34, 11);
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: wheat;
+}
+
+
+
