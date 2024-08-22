@@ -38,3 +38,12 @@ h4{
     margin-top: 0px;
     margin-left: 5px;
 }
+
+#opcao{
+    width: 99%;
+    height: 750px;
+    border-radius: 10px;
+    background-color: rgb(37, 51, 37);
+    margin: auto;
+    margin-top: 10px;
+}
