@@ -5,456 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microinformática</title>
     <link rel="stylesheet" href="estiloGerais.css">
+    <script>
+        function corrigirProva() {
+            const respostasCorretas = {
+                q1: '1',  // Resposta correta para a primeira pergunta
+                q2: '1',  // Exemplo, ajustar de acordo com a resposta correta
+                q3: '2',  // Exemplo, ajustar de acordo com a resposta correta
+                // Adicione todas as respostas corretas aqui
+            };
+
+            let nota = 0;
+            let totalQuestoes = Object.keys(respostasCorretas).length;
+
+            // Verifica respostas de radio buttons
+            Object.keys(respostasCorretas).forEach((questaoId) => {
+                const radios = document.getElementsByName(questaoId);
+                let acertou = false;
+                
+                radios.forEach((radio) => {
+                    // Reseta o estilo para todas as opções
+                    radio.parentNode.style.backgroundColor = '';
+
+                    if (radio.checked) {
+                        if (radio.value === respostasCorretas[questaoId]) {
+                            nota++;
+                            acertou = true;
+                            // Destaca a opção correta em verde
+                            radio.parentNode.style.backgroundColor = 'lightgreen';
+                        } else {
+                            // Destaca a opção incorreta em vermelho
+                            radio.parentNode.style.backgroundColor = 'lightcoral';
+                        }
+                    }
+                });
+
+                // Marca a resposta correta em verde caso o aluno tenha errado
+                if (!acertou) {
+                    radios.forEach((radio) => {
+                        if (radio.value === respostasCorretas[questaoId]) {
+                            radio.parentNode.style.backgroundColor = 'lightgreen';
+                        }
+                    });
+                }
+            });
+
+            // Exibe a nota do aluno
+            document.getElementById('resultado').innerText = `Nota final: ${nota} de ${totalQuestoes}`;
+        }
+    </script>
 </head>
 <body>
     <header>
         <div id="logo">
             <img src="assets/imagens/logo dos SDP minusculo.png" alt="">
         </div>
-        <h1>Avaliação de Microinformática </h1>
+        <h1>Avaliação de Microinformática</h1>
     
-    <nav>
-        <a href="index.html"><img src="assets/imagens/home.png" alt=""></a>
-        <h4>HOME</h4>
-    </nav>
+        <nav>
+            <a href="index.html"><img src="assets/imagens/home.png" alt=""></a>
+            <h4>HOME</h4>
+        </nav>
     </header>
-    <form action="#">
+
+    <form action="#" onsubmit="event.preventDefault(); corrigirProva();">
         <label for="nomeAluno">Nome: </label>
-        <input type="text" id="nomeAluno">
+        <input type="text" id="nomeAluno" required>
 
         <label for="turnoAula">Turno: </label>
-        <input type="text" id="turnoAula">
+        <input type="text" id="turnoAula" required>
+
+        <section class="perguntas">
+            <!-- Pergunta 1 -->
+            <article>
+                <h2>Qual a definição de computador?</h2>
+                <div class="questao">
+                    <input type="radio" name="q1" id="q1a" value="0">
+                    <label for="q1a">Máquina usada para navegar na internet</label>
+                </div>
+                <div class="questao">
+                    <input type="radio" name="q1" id="q1b" value="0">
+                    <label for="q1b">Calculadora capaz de guardar os resultados das contas feitas por um usuário.</label>
+                </div>
+                <div class="questao">
+                    <input type="radio" name="q1" id="q1c" value="1"> <!-- Resposta correta -->
+                    <label for="q1c">Máquina capaz de armazenar, processar e apresentar dados</label>
+                </div>
+                <div class="questao">
+                    <input type="radio" name="q1" id="q1d" value="0">
+                    <label for="q1d">Calculadora criada por Blaise Pascal</label>
+                </div>
+            </article>
+            
+            <!-- Continue adicionando as perguntas aqui, seguindo o mesmo padrão -->
+            
+            <!-- Pergunta 2 (Exemplo) -->
+            <article>
+                <h2>Qual a diferença entre dado e informação?</h2>
+                <div class="questao">
+                    <input type="radio" name="q2" id="q2a" value="0">
+                    <label for="q2a">Não existe diferença</label>
+                </div>
+                <div class="questao">
+                    <input type="radio" name="q2" id="q2b" value="1"> <!-- Resposta correta -->
+                    <label for="q2b">Dado são informações que guardo na forma bruta e informação é a manipulação desse dado</label>
+                </div>
+                <div class="questao">
+                    <input type="radio" name="q2" id="q2c" value="0">
+                    <label for="q2c">Dado é quando uso uma informação</label>
+                </div>
+                <div class="questao">
+                    <input type="radio" name="q2" id="q2d" value="0">
+                    <label for="q2d">Dado e informação são palavras sinônimas</label>
+                </div>
+            </article>
+
+            <!-- Continue o mesmo processo para as demais perguntas -->
+
+        </section>
+
+        <!-- Exibe a nota final do aluno -->
+        <div id="resultado" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
+
+        <!-- Botão para enviar o formulário -->
+        <button type="submit" style="margin-top: 20px;">Enviar</button>
     </form>
-    <section class="perguntas">
-        
-        <article>
-            <h2>Qual a definição de computador?</h2>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Calculadora capaz de guardar os resultados das contas feitas por um usuário.</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina capaz de armazenar, processar e apresentar dados</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Calculadra criada por Blaise Pascal</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>Qual a diferença entre dado e informação?</h2>
-                <div class="questao">
-                    <label for="resp">Não existe diferença</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Dado são informações que guardo na forma bruta e informação
-                        é a manipulação desse dado</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Dado é quando uso uma informação</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Dado e informação são palavras sinônimas</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que é Hadware?</h2>
-                <div class="questao">
-                    <label for="resp">Parte lógica do computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Cabos e peças de um computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Parte física de um computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">A alma de um computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que é Software?</h2>
-                <div class="questao">
-                    <label for="resp">Tudo aquilo que eu posso pegar</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">São programas de computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">São cabos de um computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Internet e todo o equipamento usado para comunicação</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que são periféricos e como eles são classificados?</h2>
-                <div class="questao">
-                    <label for="resp">São todos os equipamentos ou tecnologias conectadas à Máquina
-                    via cabos ou não. São classificadas como Entrada, Saída ou Entrada e Saída </label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">São programas de computador capazes de se comunicar com 
-                        com outros programas. Podem ser Envio ou Recebimento</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">São tipos de computador. Podem ser Laptopo, tablets etc</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">São programas que acessam a rede. Podem ser navegadores ou chats</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>Qual a função do SSD?</h2>
-                <div class="questao">
-                    <label for="resp">É o substituto do HD</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Tem como objetivo guardar todos os dados de forma temporária</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Guarda todos os dados de forma permanente</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Faz quase a mesma coisa que o HD</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que faz a tecla SHIFT?</h2>
-                <div class="questao">
-                    <label for="resp">Deixa todas as teclas em maiúsculo</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Faz a mesma coisa que o CapsLock</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Ativa a terceira opção de um tecla</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Ativa a segunda opção de uma tecla</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que significa dizer que determinado teclado está no padrão ABNT2?</h2>
-                <div class="questao">
-                    <label for="resp">Significa dizer que o esse padrão vem depois do 1</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É um tipo de teclado que não tem acento e ç</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Nesse tipo de teclado há acentos e ç</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É apenas uma forma de dizer que esse teclado é melhor que o da ANBT1</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que é Byte?</h2>
-                <div class="questao">
-                    <label for="resp">É um conjunto formado por 1024 bits</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É um conjunto formado por 16 bits</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É um conjunto formado por 8 bits</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É a menor unidade de medida representada por 0 ou 1</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que é pasta?</h2>
-                <div class="questao">
-                    <label for="resp">É uma forma de organizar os dados</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É um espaço reservado na memória para guardar arquivos, programas ou outras pastas</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É uma peça capaz de guardar arquivos e programas</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É uma imagem na tela do computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>Qual a definição de subpasta?</h2>
-                <div class="questao">
-                    <label for="resp">Uma pasta que guarda apenas programas de imagem</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Programa usado para guardar pastas</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Pasta colocada em uma área de trabalho</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Pasta colocada dentro de outra pasta</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>Como criar uma pasta?</h2>
-                <div class="questao">
-                    <label for="resp">Usando as teclas de atalho; shift+alt+n</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Usando o botão direito do mouse e clicando na opção pasta</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Usando as teclas de atalho shift+alt+n , ou clicando com o 
-                        botão direito do mouse em uma área vazia e depois na opções novo e pasta </label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Usando as teclas de atalho ctrl+shift+n , ou clicando com o 
-                        botão direito do mouse em uma área vazia e depois na opções novo e pasta</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>Defina as tarefas executadas pelos botões direito e esquerdo do mouse?</h2>
-                <div class="questao">
-                    <label for="resp">O botão direito é usado para selecionar, mover e abrir, enquanto 
-                        que o esquerdo é usado para abrir opções de menu</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">O botão direito é usado para selecionar, mover e abrir, enquanto 
-                        que o esquerdo é usado para abrir opções de menu</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">O botão direito é usado para arrastar e o esquerdo é usado para abrir</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">O botão direito é usado para abrir janela e o esquerdo para selecionar coisas</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que temos na unidade C:?</h2>
-                <div class="questao">
-                    <label for="resp">Todos os programas usados no computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Apenas o sistema operacional</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">O sistema operacional mais o que estiver arquivado dentro dele</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Arquivos do tipo música</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que é Sistema Operacional?</h2>
-                <div class="questao">
-                    <label for="resp">Software capaz de criar pastas</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Software que ajuda uma pessoa a navegar na internet </label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Software capaz de gerenciar pastas, arquivos e programas, além de gerenciar as funções das peças</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Software que cria uma proteção às pastas do computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que são ícones?</h2>
-                <div class="questao">
-                    <label for="resp">Imagens na área de trabalho</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Imagens que repesentam janelas de programas</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Imagens que representam pastas, arquivos e programas</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Imagens que não representam nada</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>Qual a definição de computador?</h2>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>O que é CPU?</h2>
-                <div class="questao">
-                    <label for="resp">Unidade Central de Processamento</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Considerado cérebro do computado</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É uma outra forma de se nomear o computador</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">É o nome que se dá ao gabinete</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>Qual a definição de computador?</h2>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <article>
-            <h2>Qual a definição de computador?</h2>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                <div class="questao">
-                    <label for="resp">Máquina usada para navegar na internet</label>
-                    <input type="checkbox" class="resp">
-                </div>
-                
-
-        </article>
-        <button style="margin-left: 1100px;">Enviar</button>
-    </section>
 </body>
 </html>
